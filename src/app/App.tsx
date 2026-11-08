@@ -4,6 +4,7 @@ import {
   Suspense,
   useEffect,
   useRef,
+  useState,
   type ReactNode,
 } from "react";
 import { NavLink, Route, Routes, useLocation, Link } from "react-router-dom";
@@ -23,7 +24,8 @@ import {
   Sun,
   Moon,
 } from "lucide-react";
-import { animate } from "animejs";
+import { useReveal } from "../hooks/useReveal";
+import Presence from "../components/common/Presence";
 import { useApp } from "../stores/useApp";
 const Dashboard = lazy(() => import("../features/dashboard/Dashboard"));
 const Atlas = lazy(() => import("../features/anatomy/Atlas"));
@@ -57,31 +59,36 @@ class Boundary extends Component<{ children: ReactNode }, { error: boolean }> {
     );
   }
 }
+function PageEntrance({ children }: { children: ReactNode }) {
+  const root = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+  useReveal(
+    root,
+    location.pathname,
+    ".page-heading, .hero-copy > *, .quick-card, .dashboard-lower > .panel",
+  );
+  return <div ref={root}>{children}</div>;
+}
 export default function App() {
   const { prefs, update, notice, notify } = useApp();
   const location = useLocation();
-  const main = useRef<HTMLElement>(null);
-  const side = useRef<HTMLElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const current =
     nav.find((n) => n.to === location.pathname)?.label || "Settings";
   useEffect(() => {
     document.documentElement.dataset.theme = prefs.theme;
   }, [prefs.theme]);
   useEffect(() => {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const a = animate(main.current!, {
-      opacity: [0, 1],
-      translateY: [8, 0],
-      duration: 350,
-      ease: "outQuad",
-    });
-    return () => {
-      a.revert();
-    };
+    setMenuOpen(false);
   }, [location.pathname]);
   useEffect(() => {
-    side.current?.classList.remove("mobile-open");
-  }, [location.pathname]);
+    if (!menuOpen) return;
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", escape);
+    return () => document.removeEventListener("keydown", escape);
+  }, [menuOpen]);
   useEffect(() => {
     if (!notice) return;
     const timer = setTimeout(() => notify(""), 5000);
@@ -92,7 +99,17 @@ export default function App() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <aside className="sidebar" ref={side}>
+      {menuOpen && (
+        <button
+          className="sidebar-scrim"
+          aria-label="Close navigation"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
+      <aside
+        id="workspace-navigation"
+        className={`sidebar ${menuOpen ? "mobile-open" : ""}`}
+      >
         <Link to="/" className="brand">
           <svg viewBox="0 0 44 44" aria-hidden="true">
             <path
@@ -147,7 +164,7 @@ export default function App() {
         <button
           className="sidebar-close"
           aria-label="Close menu"
-          onClick={() => side.current?.classList.remove("mobile-open")}
+          onClick={() => setMenuOpen(false)}
         >
           <PanelLeftClose size={18} />
         </button>
@@ -158,7 +175,9 @@ export default function App() {
             <button
               className="menu-button"
               aria-label="Open menu"
-              onClick={() => side.current?.classList.toggle("mobile-open")}
+              aria-expanded={menuOpen}
+              aria-controls="workspace-navigation"
+              onClick={() => setMenuOpen((v) => !v)}
             >
               <Menu size={19} />
             </button>
@@ -192,7 +211,7 @@ export default function App() {
             </Link>
           </div>
         </header>
-        <main id="main" ref={main}>
+        <main id="main">
           <Boundary>
             <Suspense
               fallback={
@@ -201,25 +220,27 @@ export default function App() {
                 </div>
               }
             >
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/atlas" element={<Atlas key="atlas" />} />
-                <Route path="/liver" element={<Atlas liver key="liver" />} />
-                <Route path="/viewer" element={<Viewer key="viewer" />} />
-                <Route path="/mpr" element={<Viewer mpr key="mpr" />} />
-                <Route path="/cases" element={<Cases />} />
-                <Route path="/learn" element={<Learning />} />
-                <Route path="/settings" element={<Preferences />} />
-                <Route
-                  path="*"
-                  element={
-                    <section className="panel">
-                      <h1>Page not found</h1>
-                      <Link to="/">Return to dashboard</Link>
-                    </section>
-                  }
-                />
-              </Routes>
+              <PageEntrance key={location.pathname}>
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/atlas" element={<Atlas key="atlas" />} />
+                  <Route path="/liver" element={<Atlas liver key="liver" />} />
+                  <Route path="/viewer" element={<Viewer key="viewer" />} />
+                  <Route path="/mpr" element={<Viewer mpr key="mpr" />} />
+                  <Route path="/cases" element={<Cases />} />
+                  <Route path="/learn" element={<Learning />} />
+                  <Route path="/settings" element={<Preferences />} />
+                  <Route
+                    path="*"
+                    element={
+                      <section className="panel">
+                        <h1>Page not found</h1>
+                        <Link to="/">Return to dashboard</Link>
+                      </section>
+                    }
+                  />
+                </Routes>
+              </PageEntrance>
             </Suspense>
           </Boundary>
           <footer className="main-footer">
@@ -246,14 +267,14 @@ export default function App() {
             ))}
         </nav>
       </div>
-      {notice && (
-        <div role="status" className="toast">
+      <Presence show={!!notice} className="toast-presence">
+        <div role="status" className="toast" key={notice}>
           {notice}
           <button aria-label="Dismiss notification" onClick={() => notify("")}>
             <X size={15} />
           </button>
         </div>
-      )}
+      </Presence>
     </div>
   );
 }

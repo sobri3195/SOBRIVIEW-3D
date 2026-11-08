@@ -1605,3 +1605,218 @@ html[data-theme="light"] .explanation strong {
   width: min(100%, 350px);
   max-height: none;
 }
+
+/* One restrained motion language for controls, surfaces and feedback. */
+:root {
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-fast: 160ms;
+  --motion-medium: 280ms;
+}
+button,
+.button,
+.file-button {
+  transition:
+    background var(--motion-fast),
+    border-color var(--motion-fast),
+    color var(--motion-fast),
+    box-shadow var(--motion-fast),
+    transform var(--motion-fast) var(--motion-ease);
+}
+button:not(:disabled):active,
+.button:active {
+  transform: scale(0.97);
+}
+button[aria-pressed="true"] {
+  border-color: #38bdf8;
+  background: #163d52;
+}
+.quick-card {
+  transition:
+    transform var(--motion-medium) var(--motion-ease),
+    border-color var(--motion-medium),
+    box-shadow var(--motion-medium);
+}
+.quick-card:hover {
+  box-shadow: 0 12px 28px #0003;
+}
+.quick-card .card-arrow {
+  transition:
+    transform var(--motion-medium) var(--motion-ease),
+    color var(--motion-fast);
+}
+.quick-card:hover .card-arrow {
+  transform: translate(2px, -2px);
+  color: var(--primary);
+}
+.structure-row,
+.sidebar nav a,
+.bottom-nav a {
+  transition:
+    background var(--motion-fast),
+    border-color var(--motion-fast),
+    color var(--motion-fast);
+}
+.structure-row i {
+  transition: box-shadow var(--motion-medium);
+}
+.structure-row.selected i {
+  box-shadow: 0 0 10px currentColor;
+}
+.scene canvas {
+  cursor: grab;
+}
+.scene canvas:active {
+  cursor: grabbing;
+}
+.organ-swatch {
+  animation: swatch-reveal 300ms var(--motion-ease) both;
+  transform-origin: left;
+}
+.modal-backdrop {
+  animation: surface-fade 200ms ease-out both;
+}
+.modal {
+  animation: dialog-reveal 300ms var(--motion-ease) both;
+}
+.toast {
+  animation: toast-reveal 280ms var(--motion-ease) both;
+}
+.explanation {
+  animation: feedback-reveal 260ms var(--motion-ease) both;
+}
+.answers button {
+  transition:
+    background 220ms,
+    border-color 220ms,
+    opacity 220ms,
+    transform 160ms;
+}
+.flashcard {
+  display: block;
+  perspective: 1000px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+.flashcard-inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 500ms var(--motion-ease);
+}
+.flashcard[data-flipped="true"] .flashcard-inner {
+  transform: rotateY(180deg);
+}
+.flashcard-front,
+.flashcard-back {
+  grid-area: 1 / 1;
+  display: grid;
+  place-items: center;
+  min-height: 150px;
+  padding: 24px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--elevated);
+}
+.flashcard-back {
+  transform: rotateY(180deg);
+  border-color: #2d847e;
+  background: var(--surface);
+  color: var(--primary);
+}
+.flashcard:hover {
+  background: transparent;
+}
+.sidebar-scrim {
+  display: none;
+}
+@keyframes surface-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes swatch-reveal {
+  from {
+    transform: scaleX(0.3);
+    opacity: 0.4;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+@keyframes dialog-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes toast-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes feedback-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 1000px) {
+  .sidebar {
+    visibility: hidden;
+    transition:
+      transform 280ms var(--motion-ease),
+      visibility 280ms;
+  }
+  .sidebar.mobile-open {
+    visibility: visible;
+  }
+  .sidebar-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 29;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: #020711a8;
+    animation: surface-fade 200ms ease-out;
+  }
+  .sidebar-scrim:hover {
+    background: #020711a8;
+  }
+  .sidebar-scrim:active {
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  button:not(:disabled):active,
+  .button:active,
+  .quick-card:hover,
+  .quick-card:hover .card-arrow {
+    transform: none;
+  }
+}
+@media print {
+  .sidebar-scrim {
+    display: none;
+  }
+}

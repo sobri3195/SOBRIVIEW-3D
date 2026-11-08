@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useReveal } from "../../hooks/useReveal";
+import { useRef, useState } from "react";
 import { questions, score, shuffle } from "../../data/quizzes";
 import { read, write } from "../../lib/storage";
 import { exportJSON } from "../../lib/export";
@@ -31,6 +32,12 @@ export default function Learning() {
     setFlipped(false);
   }
   const answer = answers[q.id];
+  const question = useRef<HTMLElement>(null);
+  useReveal(
+    question,
+    `${q.id}-${mode}-${done}`,
+    ".quiz-meta, h2, .answers > button",
+  );
   return (
     <>
       <div className="page-heading">
@@ -77,7 +84,7 @@ export default function Learning() {
         <button onClick={restart}>Start / restart</button>
       </div>
       <div className="learning-layout">
-        <section className="panel quiz-card">
+        <section ref={question} className="panel quiz-card">
           {done ? (
             <>
               <div className="eyebrow">SESSION COMPLETE</div>
@@ -137,11 +144,24 @@ export default function Learning() {
                 <>
                   <button
                     className="flashcard"
+                    key={q.id}
+                    data-flipped={mode === "Study" || flipped}
+                    aria-label={
+                      mode === "Study" || flipped
+                        ? q.options[q.answer]
+                        : "Tap to reveal answer"
+                    }
+                    aria-pressed={flipped}
                     onClick={() => setFlipped(!flipped)}
                   >
-                    {mode === "Study" || flipped
-                      ? q.options[q.answer]
-                      : "Tap to reveal answer"}
+                    <span className="flashcard-inner" aria-hidden="true">
+                      <span className="flashcard-front">
+                        Tap to reveal answer
+                      </span>
+                      <span className="flashcard-back">
+                        {q.options[q.answer]}
+                      </span>
+                    </span>
                   </button>
                 </>
               )}
