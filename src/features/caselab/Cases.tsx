@@ -1,3 +1,4 @@
+import Presence from "../../components/common/Presence";
 import { useState } from "react";
 import { read, write } from "../../lib/storage";
 import { exportJSON } from "../../lib/export";
@@ -156,88 +157,92 @@ export default function Cases() {
         ))}
       </div>
       {error && <p role="alert">{error}</p>}
-      {active && (
-        <div className="modal-backdrop">
-          <section
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="case-title"
-            className="panel modal"
-          >
-            <h2 id="case-title">Educational case notebook</h2>
-            <label>
-              Title
-              <input
-                autoFocus
-                value={active.title}
-                onChange={(e) =>
-                  setActive({ ...active, title: e.target.value })
-                }
-              />
-            </label>
-            <label>
-              Organ system
-              <input
-                value={active.topic}
-                onChange={(e) =>
-                  setActive({ ...active, topic: e.target.value })
-                }
-              />
-            </label>
-            <label>
-              Modality
-              <select
-                value={active.modality}
-                onChange={(e) =>
-                  setActive({ ...active, modality: e.target.value })
-                }
-              >
-                <option>Synthetic</option>
-                <option>Educational atlas</option>
-              </select>
-            </label>
-            <label>
-              Study notes
-              <textarea
-                rows={5}
-                value={active.notes}
-                onChange={(e) =>
-                  setActive({ ...active, notes: e.target.value })
-                }
-              />
-            </label>
-            <label>
-              Tags
-              <input
-                value={active.tags}
-                onChange={(e) => setActive({ ...active, tags: e.target.value })}
-              />
-            </label>
-            <label className="check">
-              <input
-                type="checkbox"
-                checked={consent}
-                onChange={(e) => setConsent(e.target.checked)}
-              />{" "}
-              I confirm this contains no patient information and consent to
-              local storage on this device.
-            </label>
-            <div className="button-row">
-              <button onClick={() => setActive(null)}>Cancel</button>
-              <button
-                className="primary"
-                disabled={!active.title.trim() || !consent}
-                onClick={() => {
-                  save([...cases.filter((c) => c.id !== active.id), active]);
-                  setActive(null);
-                }}
-              >
-                Save workspace
-              </button>
-            </div>
-          </section>
-        </div>
-      )}
+      <Presence show={!!active} className="modal-presence">
+        {active && (
+          <div className="modal-backdrop">
+            <section
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="case-title"
+              className="panel modal"
+            >
+              <h2 id="case-title">Educational case notebook</h2>
+              <label>
+                Title
+                <input
+                  autoFocus
+                  value={active.title}
+                  onChange={(e) =>
+                    setActive({ ...active, title: e.target.value })
+                  }
+                />
+              </label>
+              <label>
+                Organ system
+                <input
+                  value={active.topic}
+                  onChange={(e) =>
+                    setActive({ ...active, topic: e.target.value })
+                  }
+                />
+              </label>
+              <label>
+                Modality
+                <select
+                  value={active.modality}
+                  onChange={(e) =>
+                    setActive({ ...active, modality: e.target.value })
+                  }
+                >
+                  <option>Synthetic</option>
+                  <option>Educational atlas</option>
+                </select>
+              </label>
+              <label>
+                Study notes
+                <textarea
+                  rows={5}
+                  value={active.notes}
+                  onChange={(e) =>
+                    setActive({ ...active, notes: e.target.value })
+                  }
+                />
+              </label>
+              <label>
+                Tags
+                <input
+                  value={active.tags}
+                  onChange={(e) =>
+                    setActive({ ...active, tags: e.target.value })
+                  }
+                />
+              </label>
+              <label className="check">
+                <input
+                  type="checkbox"
+                  checked={consent}
+                  onChange={(e) => setConsent(e.target.checked)}
+                />{" "}
+                I confirm this contains no patient information and consent to
+                local storage on this device.
+              </label>
+              <div className="button-row">
+                <button onClick={() => setActive(null)}>Cancel</button>
+                <button
+                  className="primary"
+                  disabled={!active.title.trim() || !consent}
+                  onClick={() => {
+                    save([...cases.filter((c) => c.id !== active.id), active]);
+                    setActive(null);
+                  }}
+                >
+                  Save workspace
+                </button>
+              </div>
+            </section>
+          </div>
+        )}
+      </Presence>
     </>
   );
 }

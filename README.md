@@ -32,6 +32,7 @@ Playwright uses `/usr/bin/chromium` when present, or its installed Chromium othe
 
 - Responsive dashboard, sidebar/mobile navigation, dark/light themes, English/Indonesian organ names, reduced-motion support and lazy routes.
 - Three.js procedural atlas: orbit, zoom, pan, six camera orientations, picking, visibility, isolation, opacity, rotation, fit/reset and educational PNG export. GPU resources, observers and controls are disposed on unmount.
+- Motion: eased camera presets and focus, smooth layer/opacity/color changes, frame-rate-independent exploded views, staggered page reveals, reversible dialog/toast exits and flashcard flips. The 3D renderer sleeps when idle or offscreen and reacts immediately to system reduced-motion changes. Color and quality edits retain the current camera and WebGL canvas.
 - Eight schematic Couinaud segment objects with selection, visibility, isolation and exploded layout. Geometry and arrangement are explicitly **not anatomically accurate**.
 - Local multi-file/folder/drop DICOM import. Study/series grouping, SOP deduplication and slice sorting by patient position projected onto the orientation normal; InstanceNumber fallback for missing spatial metadata.
 - Cornerstone stack rendering with scrolling, cine, window presets, window/level, pan, zoom, inversion, length, angle, rectangular/elliptical ROI and probe tools. Compatible single-frame DICOM encodings depend on the bundled loader. Metadata is interpreted by Cornerstone; verify source calibration before interpreting physical units.

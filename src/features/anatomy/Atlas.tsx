@@ -39,6 +39,7 @@ export default function Atlas({ liver = false }: { liver?: boolean }) {
   const [explode, setExplode] = useState(false);
   const [view, setView] = useState("Front");
   const [reset, setReset] = useState(0);
+  const [focus, setFocus] = useState(0);
   const item = items.find((s) => s.id === selected) || items[0];
   function select(id: string) {
     setSelected(id);
@@ -123,7 +124,15 @@ export default function Atlas({ liver = false }: { liver?: boolean }) {
         </aside>
         <div className="viewer-column">
           <div className="toolbar">
-            <button onClick={() => setRotate(!rotate)}>
+            <button
+              onClick={() => {
+                setHidden((h) => h.filter((id) => id !== selected));
+                setFocus((n) => n + 1);
+              }}
+            >
+              <Focus size={15} /> Focus selected
+            </button>
+            <button aria-pressed={rotate} onClick={() => setRotate(!rotate)}>
               {rotate ? "Pause" : "Auto rotate"}
             </button>
             <button
@@ -174,6 +183,7 @@ export default function Atlas({ liver = false }: { liver?: boolean }) {
             rotate={rotate}
             view={view}
             reset={reset}
+            focus={focus}
           />
           <div className="viewer-status">
             <span>● Interactive 3D</span>
@@ -182,7 +192,11 @@ export default function Atlas({ liver = false }: { liver?: boolean }) {
         </div>
         <aside className="panel info">
           <div className="eyebrow">ANATOMY INFORMATION</div>
-          <div className="organ-swatch" style={{ background: item.color }} />
+          <div
+            key={item.id}
+            className="organ-swatch"
+            style={{ background: item.color }}
+          />
           <h2>{prefs.language === "id" ? item.idName : item.en}</h2>
           <em>{item.latin}</em>
           <div className="tag">{item.system}</div>
