@@ -33,7 +33,7 @@ Playwright uses `/usr/bin/chromium` when present, or its installed Chromium othe
 - Responsive dashboard, sidebar/mobile navigation, dark/light themes, English/Indonesian organ names, reduced-motion support and lazy routes.
 - Three.js procedural atlas: orbit, zoom, pan, six camera orientations, picking, visibility, isolation, opacity, rotation, fit/reset and educational PNG export. GPU resources, observers and controls are disposed on unmount.
 - Motion: eased camera presets and focus, smooth layer/opacity/color changes, frame-rate-independent exploded views, staggered page reveals, reversible dialog/toast exits and flashcard flips. The 3D renderer sleeps when idle or offscreen and reacts immediately to system reduced-motion changes. Color and quality edits retain the current camera and WebGL canvas.
-- Eight schematic Couinaud segment objects with selection, visibility, isolation and exploded layout. Geometry and arrangement are explicitly **not anatomically accurate**.
+- Liver Lab opens a locally bundled BodyParts3D liver GLB with seven anatomical groups, independent display properties, vessel/biliary presets, patient-axis cameras, PNG export and a rendered 2D fallback. Attribution and source revision ship with the asset. A separate **Skema Couinaud** tab retains the eight schematic teaching objects; these are not validated anatomical boundaries.
 - Local multi-file/folder/drop DICOM import. Study/series grouping, SOP deduplication and slice sorting by patient position projected onto the orientation normal; InstanceNumber fallback for missing spatial metadata.
 - Cornerstone stack rendering with scrolling, cine, window presets, window/level, pan, zoom, inversion, length, angle, rectangular/elliptical ROI and probe tools. Compatible single-frame DICOM encodings depend on the bundled loader. Metadata is interpreted by Cornerstone; verify source calibration before interpreting physical units.
 - A deterministic 96³ synthetic volume, orthogonal reslicing, windowing, slice navigation, 1 mm calibrated demo distance measurement, undo/redo and annotation JSON export/import.
@@ -46,7 +46,7 @@ Playwright uses `/usr/bin/chromium` when present, or its installed Chromium othe
 
 This initial implementation does **not** complete the full product specification. In particular:
 
-- Procedural spheres are schematic teaching objects, not licensed anatomical surface models. No validated liver atlas, vessel branching model, IVa/IVb boundaries or patient segmentation/registered mask import is supplied.
+- General atlas spheres and the separate Couinaud scheme are schematic teaching objects. Liver anatomy uses a BodyParts3D reference subset with source seams and truncated vessel/duct branches; no clinically validated Couinaud boundaries, patient segmentation, or registered mask import is supplied.
 - No automatic segmentation, diagnostic findings, patient sharing or claims of AI capability.
 - No ZIP import, enhanced multiframe validation, PACS, drag-editable linked MPR crosshairs, volume rendering or MPR maximization.
 - Synthetic crosshairs link voxel intersections between planes. Imported MPR planes share volume geometry but do not yet provide linked crosshair editing.
@@ -65,3 +65,9 @@ Import this repository as a Vite project. Build with `npm run build`, output dir
 ## Privacy
 
 Files are processed locally in the browser. No application upload endpoint exists. Only nonpatient preferences, educational notes and quiz results belong in localStorage (`sobriview:v1:*`). Optional anonymized binary caching uses IndexedDB after explicit consent. The software cannot verify that a study is anonymous. Use only appropriately de-identified educational data. Clear local caches on shared devices.
+
+## Liver asset verification
+
+`public/models/liver/` bundles the GLB, manifest, source license and provenance from `organui/liver-3d` commit `528ee1794670d3bfa23d581f91ba49d6af585b03`. The unit suite verifies the binary SHA-256, seven actual node/extras/FMA mappings, geometry counts, shared normalization and camera framing. See `public/models/liver/SOBRIVIEW_SOURCE.md` for checksums, scope and modifications.
+
+To regenerate the attributed 2D preview from the real model, start the development server, then run `node scripts/render-liver-preview.mjs`. Playwright uses system Chromium or `CHROMIUM_PATH`. This changes only `liver-preview.webp`; it never modifies the GLB.

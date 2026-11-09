@@ -1,0 +1,695 @@
+{
+  "dataset": "BodyParts3D",
+  "version": "4.0",
+  "release": "2013-05-16",
+  "retrieved": "2026-09-22",
+  "license": "CC-BY-4.0",
+  "licenseUrl": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html",
+  "credit": "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International",
+  "inputs": [
+    {
+      "file": "isa_BP3D_4.0_obj_99.zip",
+      "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip",
+      "sha256": "40665852c49f218326590e204db91064a1ecfc3c6f8cbd7bbbcaac62c7cd409e"
+    },
+    {
+      "file": "isa_element_parts.txt",
+      "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_element_parts.txt",
+      "sha256": "a3de74423f943b0d724ae8f59b3a817f87c423a544f8db98113b1980817cbeaf"
+    },
+    {
+      "file": "partof_element_parts.txt",
+      "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_element_parts.txt",
+      "sha256": "3f5f6df1028eb122b30de77c711597b6bb8e5541658e5985859fd228adbf88ea"
+    },
+    {
+      "file": "isa_parts_list_e.txt",
+      "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_parts_list_e.txt",
+      "sha256": "ab7796deedd49205e77f3609a1cb8c53e2bbee14ecb5c9a6ca05227469780513"
+    },
+    {
+      "file": "partof_parts_list_e.txt",
+      "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_parts_list_e.txt",
+      "sha256": "9224080557053e6f1322f1e13ab27f0ecde0db19bb3b505f0631afad230eeebd"
+    }
+  ],
+  "transform": {
+    "sourceBounds": {
+      "min": [
+        -115.064,
+        -202.413,
+        1019.58
+      ],
+      "max": [
+        94.3668,
+        -43.3287,
+        1183.14
+      ]
+    },
+    "center": [
+      -10.348599999999998,
+      -122.87085,
+      1101.3600000000001
+    ],
+    "scale": 0.02,
+    "axes": "[x,z,-y]"
+  },
+  "runtime": {
+    "file": "liver.glb",
+    "bytes": 5579432,
+    "sha256": "4059e94f415a765273e2f095c5fd2c68edbb761c932dfa9460f9893ee5b0decb"
+  },
+  "structures": [
+    {
+      "id": "liver",
+      "name": "Liver surface",
+      "fma": "FMA7197",
+      "sourceName": "liver (tissue subset)",
+      "mapping": "isa",
+      "concepts": [
+        "FMA13365",
+        "FMA15739",
+        "FMA15741",
+        "FMA15742",
+        "FMA15743",
+        "FMA15744",
+        "FMA15745",
+        "FMA15746"
+      ],
+      "elements": [
+        {
+          "id": "FJ2816",
+          "sha256": "384a517622b5ae1106a811ee557deb1a1349d5cc94c230c283a1bab9d34f0a79",
+          "bytes": 317277,
+          "vertices": 2526,
+          "triangles": 5020
+        },
+        {
+          "id": "FJ2818",
+          "sha256": "c1523e137e1466a66e9263161f6155e1bbcf263f74c4cafebec1a5993fd8fde0",
+          "bytes": 936395,
+          "vertices": 7482,
+          "triangles": 14326
+        },
+        {
+          "id": "FJ2819",
+          "sha256": "d14abcca7dbd82529eedd830d9ed9c80edd4261b22c32d681b9cb14feffdfa46",
+          "bytes": 677762,
+          "vertices": 5487,
+          "triangles": 10326
+        },
+        {
+          "id": "FJ2820",
+          "sha256": "bac2d30a479b0a7765f4a7fe4e25bd44fa7c01cd6a0b24bf4323d270bad75b35",
+          "bytes": 1296045,
+          "vertices": 11418,
+          "triangles": 17942
+        },
+        {
+          "id": "FJ2821",
+          "sha256": "dcd7f4d1a09b3034cfe4b51a2efe766201ff09bcea53d8c2315219034b0aa3de",
+          "bytes": 793787,
+          "vertices": 6605,
+          "triangles": 11442
+        },
+        {
+          "id": "FJ2822",
+          "sha256": "14b4e694857cea1de3897262a83d9aab0a8a05c39eef12e775a2adc58def97a8",
+          "bytes": 1282103,
+          "vertices": 9988,
+          "triangles": 19450
+        },
+        {
+          "id": "FJ2409",
+          "sha256": "6d7b0d3d2fc1f1e4255f8b665a61bbbf3ea6712cea85a95246851acbfda0c98f",
+          "bytes": 596944,
+          "vertices": 5091,
+          "triangles": 8534
+        },
+        {
+          "id": "FJ2823",
+          "sha256": "9c8659ff030e9e48504c0faccad1af0f45b865220e013fdaafb1ccd2c7168e79",
+          "bytes": 1284700,
+          "vertices": 10230,
+          "triangles": 19156
+        },
+        {
+          "id": "FJ2824",
+          "sha256": "f91e3c89b4db356fa5e8b03dbbb38b2dbebe358788ba1eb01d2c6ecc2ac94c2d",
+          "bytes": 1456320,
+          "vertices": 11459,
+          "triangles": 21592
+        }
+      ]
+    },
+    {
+      "id": "gallbladder",
+      "name": "Gallbladder",
+      "fma": "FMA7202",
+      "sourceName": "gallbladder",
+      "mapping": "partof",
+      "concepts": [
+        "FMA7202"
+      ],
+      "elements": [
+        {
+          "id": "FJ2817",
+          "sha256": "6ac50f710bc24344ce81bf63bcf2bb1250b2c765bd3d3feb6a893840c1434918",
+          "bytes": 144859,
+          "vertices": 1202,
+          "triangles": 2396
+        }
+      ]
+    },
+    {
+      "id": "portal",
+      "name": "Portal vein",
+      "fma": "FMA50735",
+      "sourceName": "hepatic portal vein",
+      "mapping": "partof",
+      "concepts": [
+        "FMA50735"
+      ],
+      "elements": [
+        {
+          "id": "FJ1853",
+          "sha256": "a9e359ffc1ab1d6f3134e72ca2a8ebaf1dc91df94827f4226a453fb3608e2d9b",
+          "bytes": 222419,
+          "vertices": 1793,
+          "triangles": 3582
+        },
+        {
+          "id": "FJ1893",
+          "sha256": "6feb8f567af7332f25a489990a4ae24ad92fc740d0d78a110b52954149a6d2fc",
+          "bytes": 86147,
+          "vertices": 786,
+          "triangles": 1354
+        },
+        {
+          "id": "FJ1913",
+          "sha256": "64e5a9bab9d7d720f64740afe2af45ddef2d6d4fd30bb588125bf65d00e5cd89",
+          "bytes": 219500,
+          "vertices": 1910,
+          "triangles": 3286
+        },
+        {
+          "id": "FJ1914",
+          "sha256": "07b9c81f6ae022508c9eb109714eb9eb2cb319bb388e7320a93e4bf9c43568ef",
+          "bytes": 19612,
+          "vertices": 180,
+          "triangles": 316
+        },
+        {
+          "id": "FJ2404",
+          "sha256": "907b048e5f08e8f546427173996d76d7844d7b57fe3576d9ade854d8e5875534",
+          "bytes": 523744,
+          "vertices": 4965,
+          "triangles": 6706
+        },
+        {
+          "id": "FJ2405",
+          "sha256": "b3e72f06d867b67fe7a4e1322293758709c00aa07e0a087b80ec273af6d8a128",
+          "bytes": 261163,
+          "vertices": 2605,
+          "triangles": 3230
+        },
+        {
+          "id": "FJ3073",
+          "sha256": "37c7a8d6706d168cbb856da3cbf23370e5b5a2e291869cb16510e18d77f8e29b",
+          "bytes": 46494,
+          "vertices": 404,
+          "triangles": 770
+        },
+        {
+          "id": "FJ3074",
+          "sha256": "0ba9fba44b08ccd8046a52dc358ff7cd81e0401a530de0d27fedd468febdd423",
+          "bytes": 183734,
+          "vertices": 1582,
+          "triangles": 2832
+        },
+        {
+          "id": "FJ3102",
+          "sha256": "10a59163098dd1896bd60a0893e4084f4b37660b9443bad284489999b3763749",
+          "bytes": 42870,
+          "vertices": 367,
+          "triangles": 730
+        },
+        {
+          "id": "FJ3111",
+          "sha256": "d316e56f40acbffaf8aa0b81a7617838cf8f507ffe9123e61bdbabbe2e283a2d",
+          "bytes": 131494,
+          "vertices": 1100,
+          "triangles": 2194
+        },
+        {
+          "id": "FJ3112",
+          "sha256": "0bda131695894a61a7f7c68b217204673667c5560db9b12010fa3f110c571979",
+          "bytes": 65241,
+          "vertices": 554,
+          "triangles": 1100
+        },
+        {
+          "id": "FJ3113",
+          "sha256": "3f81cbcaa89e260367f026d8e0fc387b6760ef34e6a46f8d80bac1622b4100a5",
+          "bytes": 112043,
+          "vertices": 1031,
+          "triangles": 1712
+        },
+        {
+          "id": "FJ3122",
+          "sha256": "0396415a16fc85e933ca43ca30fd55289cbb7fd412f1a33a004dc5b2f485acd3",
+          "bytes": 11789,
+          "vertices": 105,
+          "triangles": 206
+        },
+        {
+          "id": "FJ3124",
+          "sha256": "b7a1c20e756b9c247542a68e6a281de1df72dae2143a8daf635efe32cbc3ff4c",
+          "bytes": 33165,
+          "vertices": 319,
+          "triangles": 494
+        },
+        {
+          "id": "FJ3125",
+          "sha256": "10b5e566e4d431fbd5c6d2f66a5633fb399a550f3c69c41a2be9dd95de4910db",
+          "bytes": 137337,
+          "vertices": 1161,
+          "triangles": 2284
+        },
+        {
+          "id": "FJ3126",
+          "sha256": "9f0e54615639750955d2c6278dc73c1d18c6723ddb5c709dc8b4f313a7a74270",
+          "bytes": 143427,
+          "vertices": 1217,
+          "triangles": 2364
+        },
+        {
+          "id": "FJ3127",
+          "sha256": "b723ba5592823c4608ccef1ab0cd82ce03254af789166b1c5fc0ca5a66aab790",
+          "bytes": 73472,
+          "vertices": 662,
+          "triangles": 1162
+        },
+        {
+          "id": "FJ3128",
+          "sha256": "5ce863ef62729e554edc8e68c036cd5c6f526c18e403a1864c3f772452be49da",
+          "bytes": 98504,
+          "vertices": 838,
+          "triangles": 1660
+        }
+      ]
+    },
+    {
+      "id": "hepatic-veins",
+      "name": "Hepatic veins",
+      "fma": "FMA14337",
+      "sourceName": "hepatic vein and tributary of hepatic vein",
+      "mapping": "isa",
+      "concepts": [
+        "FMA14337",
+        "FMA17541"
+      ],
+      "elements": [
+        {
+          "id": "FJ2414",
+          "sha256": "bd57b4b26daef763025a4e2ae75102c687926a604db3b19fa44993033dc0f32f",
+          "bytes": 139613,
+          "vertices": 1191,
+          "triangles": 2260
+        },
+        {
+          "id": "FJ2415",
+          "sha256": "dced2210d0b4b725e40c2e63791023fdcf7ee8aadd2f6718fd442c0e7654107f",
+          "bytes": 87845,
+          "vertices": 803,
+          "triangles": 1386
+        },
+        {
+          "id": "FJ2416",
+          "sha256": "2d3c37d1811a909e5cfd016f9d5c700b433d5f55e4bcb5fb64494dbfcb839181",
+          "bytes": 264801,
+          "vertices": 2510,
+          "triangles": 3538
+        },
+        {
+          "id": "FJ1867",
+          "sha256": "dae1be5a4db1dbf978a9b8ee2da9bf8565b0211dcd3d9541ca8e3f52eb6b3ecb",
+          "bytes": 72337,
+          "vertices": 613,
+          "triangles": 1222
+        },
+        {
+          "id": "FJ3083",
+          "sha256": "81429abe63ecf1557b9ab5187782e6a78ddca971583dad7f46e38f57ddc54e23",
+          "bytes": 171755,
+          "vertices": 1409,
+          "triangles": 2806
+        },
+        {
+          "id": "FJ3084",
+          "sha256": "66086f128e958b71ca2e250d1519b47bbb1e303ba19ce7401f8e62916b31d415",
+          "bytes": 185821,
+          "vertices": 1515,
+          "triangles": 3026
+        },
+        {
+          "id": "FJ3085",
+          "sha256": "c709eb8e01b347f354c7258fd9d5f829b2f6640e663f34bd30453713a5bee2dc",
+          "bytes": 34245,
+          "vertices": 293,
+          "triangles": 582
+        },
+        {
+          "id": "FJ3086",
+          "sha256": "bd8d6f683c6e501e62e895d98859e6b7591df32f5fbcde80c6de87ba46239647",
+          "bytes": 58822,
+          "vertices": 502,
+          "triangles": 990
+        },
+        {
+          "id": "FJ3097",
+          "sha256": "3173b1bb808b7c5cc3f3de44772b34c2c360ae00c5147d66a12d675d5bbe570b",
+          "bytes": 43618,
+          "vertices": 385,
+          "triangles": 722
+        },
+        {
+          "id": "FJ3098",
+          "sha256": "5331851628f47c02b309eab63ab7361658b84950abb0e2d586c56ef5fc561356",
+          "bytes": 40185,
+          "vertices": 348,
+          "triangles": 684
+        },
+        {
+          "id": "FJ3099",
+          "sha256": "2bd6db4021b2fa8ee4f81e60cfb3dae4a070d921707497bf9cab6b84f98dc495",
+          "bytes": 29970,
+          "vertices": 272,
+          "triangles": 488
+        },
+        {
+          "id": "FJ3100",
+          "sha256": "143c288d1c524c76d1f8198182f11dc4884d78eacd8013a4c0ae5ce209116d5a",
+          "bytes": 21453,
+          "vertices": 195,
+          "triangles": 354
+        },
+        {
+          "id": "FJ3101",
+          "sha256": "c7e03313693b3e232ee3e82093a20daa5ec3dea060926861b6ab2f5467be9636",
+          "bytes": 51230,
+          "vertices": 440,
+          "triangles": 872
+        },
+        {
+          "id": "FJ3118",
+          "sha256": "ab6f8bd812766331859f8adaa01cef1c202ebd974967ea411b17c54e9da84a5d",
+          "bytes": 84526,
+          "vertices": 728,
+          "triangles": 1402
+        },
+        {
+          "id": "FJ3119",
+          "sha256": "ae4707592889653dccb669e53a1356d67696c361cce28fc19c8910f8717fdb28",
+          "bytes": 122720,
+          "vertices": 1033,
+          "triangles": 2062
+        },
+        {
+          "id": "FJ3120",
+          "sha256": "c5d056d8281c1f0447214e3a310e98da532760293b5ed1e90e934a77bfec0703",
+          "bytes": 84444,
+          "vertices": 718,
+          "triangles": 1418
+        },
+        {
+          "id": "FJ3121",
+          "sha256": "51942b37d2a29a6e32c3401710d6605e5958c1462922c3968cdca79b0a7fac1c",
+          "bytes": 232680,
+          "vertices": 1882,
+          "triangles": 3722
+        }
+      ]
+    },
+    {
+      "id": "artery",
+      "name": "Hepatic artery",
+      "fma": "FMA14772",
+      "sourceName": "hepatic artery proper",
+      "mapping": "partof",
+      "concepts": [
+        "FMA14772"
+      ],
+      "elements": [
+        {
+          "id": "FJ1916",
+          "sha256": "bddea5b341bc0e4264040c98ea96b65e0971535f3031311e201ea4282b835c8b",
+          "bytes": 22945,
+          "vertices": 214,
+          "triangles": 362
+        },
+        {
+          "id": "FJ2386",
+          "sha256": "6001dc21e4c922894507a1f4db097a00610b848778c8ad27de3f006f7ee19a9a",
+          "bytes": 22945,
+          "vertices": 214,
+          "triangles": 362
+        },
+        {
+          "id": "FJ3075",
+          "sha256": "796d8ed0c0958a34b6eecd55ce698604caacbf39839e6e83a421407d72c7d6cc",
+          "bytes": 124239,
+          "vertices": 1244,
+          "triangles": 1666
+        },
+        {
+          "id": "FJ3076",
+          "sha256": "4748142fb6d678b785e582321ee628fc204b43123ded97a1f7af56a364cbabcd",
+          "bytes": 53421,
+          "vertices": 459,
+          "triangles": 892
+        },
+        {
+          "id": "FJ3077",
+          "sha256": "fd4de5d5d5799a9ad0a4a4caad0e2a49eb5926706c0c8eefe2cd174d60863f51",
+          "bytes": 27267,
+          "vertices": 250,
+          "triangles": 430
+        },
+        {
+          "id": "FJ3081",
+          "sha256": "bd4cff9e5fc6feb0d0f742a91d8a67e1fa4cda96e455e5a21a638b064d195da6",
+          "bytes": 20836,
+          "vertices": 181,
+          "triangles": 358
+        },
+        {
+          "id": "FJ3091",
+          "sha256": "9e741671cffe043f2c51a4474bc672d9053bce70a01a1e9d81238e35b226860a",
+          "bytes": 37203,
+          "vertices": 341,
+          "triangles": 598
+        },
+        {
+          "id": "FJ3092",
+          "sha256": "2e10af454a1ec0dbb14218951d287d5408aa29a4f4db9169b5888756482d1b8d",
+          "bytes": 39204,
+          "vertices": 364,
+          "triangles": 618
+        },
+        {
+          "id": "FJ3093",
+          "sha256": "2d863da0b8be2e5d6e6023110cdba26acb9778422429c87bef1a6f425ede58aa",
+          "bytes": 46113,
+          "vertices": 460,
+          "triangles": 658
+        },
+        {
+          "id": "FJ3095",
+          "sha256": "373d94e12329224b9707b3ccb357994169a49405f68b257e0e278669c6fa1c9d",
+          "bytes": 78499,
+          "vertices": 666,
+          "triangles": 1328
+        },
+        {
+          "id": "FJ3106",
+          "sha256": "f17498768ea407af624833b72f31cdbfa5cfe6c5649bd2f4fe511a78e1155855",
+          "bytes": 47184,
+          "vertices": 425,
+          "triangles": 754
+        },
+        {
+          "id": "FJ3107",
+          "sha256": "42235fa9aaac3881dc36fbb138ff308b57d5da006d2cdf8f1b5ba8b1c6c3a106",
+          "bytes": 47334,
+          "vertices": 496,
+          "triangles": 612
+        },
+        {
+          "id": "FJ3114",
+          "sha256": "d6fbd37db3996fbe87ebf8471e6fc53e30563bb9e0db5da3570e340607a97f1b",
+          "bytes": 50942,
+          "vertices": 479,
+          "triangles": 772
+        },
+        {
+          "id": "FJ3115",
+          "sha256": "83e41f08d853a73d831209f67db2484b5b479e59622f8498a9e79479b8ef411d",
+          "bytes": 109701,
+          "vertices": 1037,
+          "triangles": 1616
+        },
+        {
+          "id": "FJ3116",
+          "sha256": "6a1eb63f8c4faa5f696eaf5ac59315e754c8fefe97063d3a189dc2737e520b94",
+          "bytes": 61664,
+          "vertices": 631,
+          "triangles": 814
+        },
+        {
+          "id": "FJ3117",
+          "sha256": "e7858acd2c635e83f72ebe948b482bf3a8b51c50791457f9c4190273b76d492c",
+          "bytes": 25867,
+          "vertices": 223,
+          "triangles": 442
+        }
+      ]
+    },
+    {
+      "id": "biliary",
+      "name": "Hepatic bile ducts",
+      "fma": "FMA71891",
+      "sourceName": "hepatic biliary tree",
+      "mapping": "partof",
+      "concepts": [
+        "FMA71891"
+      ],
+      "elements": [
+        {
+          "id": "FJ1883",
+          "sha256": "3f2550995fc2df1d1cd49e4a421d50f66b88dca0dbbdb7938174d4625bd95c7e",
+          "bytes": 29370,
+          "vertices": 283,
+          "triangles": 428
+        },
+        {
+          "id": "FJ3071",
+          "sha256": "c2c9e8156274a487a51c0613a2e91dcffe764e1b673a62d7a56266811ccc6321",
+          "bytes": 43607,
+          "vertices": 395,
+          "triangles": 686
+        },
+        {
+          "id": "FJ3072",
+          "sha256": "f9a417445e9a3cea161f7952f8dcfea4e2cfca24f397a0a35696087a20d079b4",
+          "bytes": 126892,
+          "vertices": 1265,
+          "triangles": 1708
+        },
+        {
+          "id": "FJ3079",
+          "sha256": "31a8cf303123987ddd1a3092b9a7c5ceb092fc10afce61193f40e1fe43af845f",
+          "bytes": 80800,
+          "vertices": 684,
+          "triangles": 1364
+        },
+        {
+          "id": "FJ3088",
+          "sha256": "efd9fc5309a68bd0b8b7c7fd016e2b871adcfe8d7df8d1a1b127017b700a3b50",
+          "bytes": 38988,
+          "vertices": 368,
+          "triangles": 608
+        },
+        {
+          "id": "FJ3089",
+          "sha256": "7f78fc38fd1aab29e44c3287ae58c7636a9c2c50aae69e32ca1098e0befa2b91",
+          "bytes": 45141,
+          "vertices": 443,
+          "triangles": 664
+        },
+        {
+          "id": "FJ3090",
+          "sha256": "664f4c51268e477bda417b4cb35adf48a716973399005d574692ad79ec9c1ef1",
+          "bytes": 52971,
+          "vertices": 503,
+          "triangles": 808
+        },
+        {
+          "id": "FJ3096",
+          "sha256": "11a5891a14162d16c8f919d5a8da6d1e7ca243f7c0d8697f6f10aceed587e97a",
+          "bytes": 49991,
+          "vertices": 428,
+          "triangles": 848
+        },
+        {
+          "id": "FJ3103",
+          "sha256": "61bd543e1626e4856094b4aec94af8457094a2b9bf20186fd96bd88bce05001a",
+          "bytes": 45773,
+          "vertices": 432,
+          "triangles": 698
+        },
+        {
+          "id": "FJ3104",
+          "sha256": "7da92c0c19f9e66a23155524581cc26b280e0c9f78cb0b7e8cfe1b41b2848e30",
+          "bytes": 37050,
+          "vertices": 344,
+          "triangles": 570
+        },
+        {
+          "id": "FJ3105",
+          "sha256": "3580eed66acd48da39fc321d2fe491daed3edc6be6bfb6da8338de234d27eb26",
+          "bytes": 36411,
+          "vertices": 371,
+          "triangles": 494
+        },
+        {
+          "id": "FJ3108",
+          "sha256": "cd9efbda9ba24249ad662d6f6c48e5d6bd0ae8121076d49648ed368d437544cb",
+          "bytes": 55397,
+          "vertices": 503,
+          "triangles": 870
+        },
+        {
+          "id": "FJ3109",
+          "sha256": "57e08b2162780c4cdc25221810eb0abfe5f2971d891d25768823673e53aaff14",
+          "bytes": 42484,
+          "vertices": 404,
+          "triangles": 628
+        },
+        {
+          "id": "FJ3110",
+          "sha256": "0cacd86a71659ba81507207d5dbc17d34b38678c3feede81eeef1284827dca06",
+          "bytes": 88647,
+          "vertices": 896,
+          "triangles": 1196
+        },
+        {
+          "id": "FJ3123",
+          "sha256": "5a14237d388e8c716a56c54e51dcccc3f89d187f1cf0d4eb4e0e04c1a7aac405",
+          "bytes": 12973,
+          "vertices": 115,
+          "triangles": 226
+        }
+      ]
+    },
+    {
+      "id": "cystic",
+      "name": "Cystic duct",
+      "fma": "FMA14539",
+      "sourceName": "cystic duct",
+      "mapping": "partof",
+      "concepts": [
+        "FMA14539"
+      ],
+      "elements": [
+        {
+          "id": "FJ3080",
+          "sha256": "8f7a2604f762392129842c1a7251be006b00bfe9211698d48d0e6dd2bd512d28",
+          "bytes": 17016,
+          "vertices": 156,
+          "triangles": 278
+        }
+      ]
+    }
+  ]
+}

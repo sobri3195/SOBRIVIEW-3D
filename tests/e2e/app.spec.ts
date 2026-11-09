@@ -22,6 +22,7 @@ test("dashboard, anatomy controls and screenshot export", async ({ page }) => {
 });
 test("liver segment selection and visibility", async ({ page }) => {
   await page.goto("/liver");
+  await page.getByRole("tab", { name: "Skema Couinaud" }).click();
   await page
     .getByRole("button", { name: "II · Left lateral superior", exact: true })
     .click();
