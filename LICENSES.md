@@ -6,6 +6,8 @@ No project-wide redistribution license is selected in this initial implementatio
 
 Original procedural meshes, SVG branding, mathematical phantom and quiz wording were created for this project. No proprietary assets or external patient datasets are bundled.
 
+The bundled liver reference model and its rendered WebP/PNG images retain **CC BY 4.0** terms: “BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International.” The asset packager is https://github.com/organui/liver-3d. Complete source notices, the upstream license discrepancy and integration modifications are recorded in `public/models/liver/LICENSE.txt`, `MODEL_PROVENANCE.md`, and `SOBRIVIEW_SOURCE.md`. Application code licensing does not replace these asset terms.
+
 Major dependencies retain their upstream licenses:
 
 | Dependency                                | Upstream license |

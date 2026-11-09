@@ -29,6 +29,7 @@ import Presence from "../components/common/Presence";
 import { useApp } from "../stores/useApp";
 const Dashboard = lazy(() => import("../features/dashboard/Dashboard"));
 const Atlas = lazy(() => import("../features/anatomy/Atlas"));
+const Liver = lazy(() => import("../features/liver/Liver"));
 const Viewer = lazy(() => import("../features/dicom/Viewer"));
 const Learning = lazy(() => import("../features/learning/Learning"));
 const Cases = lazy(() => import("../features/caselab/Cases"));
@@ -224,7 +225,7 @@ export default function App() {
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/atlas" element={<Atlas key="atlas" />} />
-                  <Route path="/liver" element={<Atlas liver key="liver" />} />
+                  <Route path="/liver" element={<Liver />} />
                   <Route path="/viewer" element={<Viewer key="viewer" />} />
                   <Route path="/mpr" element={<Viewer mpr key="mpr" />} />
                   <Route path="/cases" element={<Cases />} />
