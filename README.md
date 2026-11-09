@@ -4,7 +4,7 @@ Interactive Radiology, Anatomy & Medical Imaging Explorer. Developed by Muhammad
 
 A client-side educational workstation built with Vite, React, strict TypeScript, Three.js, Anime.js 4, Tailwind CSS, Lucide, Zustand, React Router and Cornerstone3D 4.22.13. No account, backend, paid API key or PACS is required.
 
-**For education and research. Not validated for clinical diagnosis or treatment decisions.** The procedural atlas is schematic; it is not a patient reconstruction or validated organ atlas.
+**For education and research. Not validated for clinical diagnosis or treatment decisions.** The dashboard model and Couinaud scheme are schematic; it is not a patient reconstruction or validated organ atlas.
 
 ## Develop
 
@@ -31,8 +31,8 @@ Playwright uses `/usr/bin/chromium` when present, or its installed Chromium othe
 ## Implemented workflows
 
 - Responsive dashboard, sidebar/mobile navigation, dark/light themes, English/Indonesian organ names, reduced-motion support and lazy routes.
-- Three.js procedural atlas: orbit, zoom, pan, six camera orientations, picking, visibility, isolation, opacity, rotation, fit/reset and educational PNG export. GPU resources, observers and controls are disposed on unmount.
-- Motion: eased camera presets and focus, smooth layer/opacity/color changes, frame-rate-independent exploded views, staggered page reveals, reversible dialog/toast exits and flashcard flips. The 3D renderer sleeps when idle or offscreen and reacts immediately to system reduced-motion changes. Color and quality edits retain the current camera and WebGL canvas.
+- BodyParts3D anatomy atlas: 13 reviewed UI groups covering 604 unique source meshes, local gzip assets, independent visibility, selection, hover, isolation/restore, focus, search/system filters, camera presets, rotation, fullscreen and attributed PNG export. Partial source anatomy is labelled. Individual opacity is explicitly disabled; use isolation to reveal internal structures.
+- Motion: the dashboard/Couinaud renderer has eased camera presets, smooth layer/opacity/color changes and schematic exploded views; the reference atlas uses the documented Dagno camera controls with reduced-motion-aware auto rotation. Page reveals, reversible dialog/toast exits and flashcard flips remain available.
 - Liver Lab opens a locally bundled BodyParts3D liver GLB with seven anatomical groups, independent display properties, vessel/biliary presets, patient-axis cameras, PNG export and a rendered 2D fallback. Attribution and source revision ship with the asset. A separate **Skema Couinaud** tab retains the eight schematic teaching objects; these are not validated anatomical boundaries.
 - Local multi-file/folder/drop DICOM import. Study/series grouping, SOP deduplication and slice sorting by patient position projected onto the orientation normal; InstanceNumber fallback for missing spatial metadata.
 - Cornerstone stack rendering with scrolling, cine, window presets, window/level, pan, zoom, inversion, length, angle, rectangular/elliptical ROI and probe tools. Compatible single-frame DICOM encodings depend on the bundled loader. Metadata is interpreted by Cornerstone; verify source calibration before interpreting physical units.
@@ -46,7 +46,7 @@ Playwright uses `/usr/bin/chromium` when present, or its installed Chromium othe
 
 This initial implementation does **not** complete the full product specification. In particular:
 
-- General atlas spheres and the separate Couinaud scheme are schematic teaching objects. Liver anatomy uses a BodyParts3D reference subset with source seams and truncated vessel/duct branches; no clinically validated Couinaud boundaries, patient segmentation, or registered mask import is supplied.
+- Dashboard spheres and the separate Couinaud scheme are schematic teaching objects. Liver anatomy uses a BodyParts3D reference subset with source seams and truncated vessel/duct branches; no clinically validated Couinaud boundaries, patient segmentation, or registered mask import is supplied.
 - No automatic segmentation, diagnostic findings, patient sharing or claims of AI capability.
 - No ZIP import, enhanced multiframe validation, PACS, drag-editable linked MPR crosshairs, volume rendering or MPR maximization.
 - Synthetic crosshairs link voxel intersections between planes. Imported MPR planes share volume geometry but do not yet provide linked crosshair editing.
@@ -65,6 +65,14 @@ Import this repository as a Vite project. Build with `npm run build`, output dir
 ## Privacy
 
 Files are processed locally in the browser. No application upload endpoint exists. Only nonpatient preferences, educational notes and quiz results belong in localStorage (`sobriview:v1:*`). Optional anonymized binary caching uses IndexedDB after explicit consent. The software cannot verify that a study is anonymous. Use only appropriately de-identified educational data. Clear local caches on shared devices.
+
+## Whole-body atlas assets
+
+`@dagno/anatomy-model@0.1.2` supplies the locally bundled `public/anatomy/atlas.json` and all 15 gzip chunks. `npm run prepare:anatomy` verifies their pinned checksums and refreshes the assets before each build. `public/anatomy/SOBRIVIEW_SOURCE.md` records source revisions, scope and all 13 mappings; `SOURCE.json` holds exact hashes. The default preset hides the external obliques. Lung groups are source bronchial/vessel trees, not complete parenchymal surfaces; other partial groups are labelled.
+
+The official `@dagno/anatomy-engine@0.2.0` manifest loader is paired with a documented MIT source extension under `src/vendor/anatomy-engine/` for exact group visibility, focus, capture, assembled hover and render culling. Three.js `0.186.1` matches its peer requirement. No private engine fields are accessed by the React adapter.
+
+Run `node scripts/render-atlas-preview.mjs` while the development server runs to regenerate the attributed preview from the actual local atlas renderer. WebGL failure uses that local image with honest 2D status. The unit suite validates every geometry offset, vertex/index, coordinate bound, mapping and gzip contract.
 
 ## Liver asset verification
 

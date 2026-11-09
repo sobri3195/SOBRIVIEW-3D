@@ -30,11 +30,12 @@ async function sample(page: Page, ms = 350) {
   );
 }
 
-test("3D motion settles, preserves the canvas on color changes, and honors live reduced motion", async ({
+test("schematic motion settles, preserves the canvas on color changes, and honors live reduced motion", async ({
   page,
 }) => {
   await instrument(page);
-  await page.goto("/atlas");
+  await page.goto("/liver");
+  await page.getByRole("tab", { name: "Skema Couinaud" }).click();
   const canvas = page.locator(".scene canvas");
   await expect(canvas).toBeVisible();
   await expect

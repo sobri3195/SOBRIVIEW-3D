@@ -8,6 +8,8 @@ Original procedural meshes, SVG branding, mathematical phantom and quiz wording 
 
 The bundled liver reference model and its rendered WebP/PNG images retain **CC BY 4.0** terms: “BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International.” The asset packager is https://github.com/organui/liver-3d. Complete source notices, the upstream license discrepancy and integration modifications are recorded in `public/models/liver/LICENSE.txt`, `MODEL_PROVENANCE.md`, and `SOBRIVIEW_SOURCE.md`. Application code licensing does not replace these asset terms.
 
+The whole-body atlas also bundles BodyParts3D under **CC BY 4.0**, prepared by Human Atlas / Dagno. Its original legal notice and attribution ship in `public/anatomy/LICENSE` and `ATTRIBUTION.md`. Source revisions, hashes, partial group definitions and rendering adaptations are recorded in that directory. The extended Dagno renderer retains the MIT copyright notice in `src/vendor/anatomy-engine/LICENSE` and the deployed `public/anatomy/ENGINE_LICENSE.txt`. Model licensing is independent of engine/application code licensing.
+
 Major dependencies retain their upstream licenses:
 
 | Dependency                                | Upstream license |

@@ -1104,6 +1104,7 @@ progress {
   margin-left: auto;
 }
 .skip-link {
+  clip-path: inset(50%);
   position: fixed;
   top: -100px;
   left: 20px;
@@ -1113,6 +1114,7 @@ progress {
   color: #000;
 }
 .skip-link:focus {
+  clip-path: none;
   top: 10px;
 }
 :focus-visible {
@@ -1932,5 +1934,111 @@ input:disabled {
   }
   .liver-tabs button {
     font-size: 12px;
+  }
+}
+
+.body-atlas .atlas-toolbar {
+  flex-wrap: wrap;
+  white-space: normal;
+  overflow: visible;
+}
+.body-atlas .scene-wrap {
+  min-height: 620px;
+}
+.atlas-panel > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px 16px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.atlas-panel > summary::after {
+  content: "−";
+  margin-left: auto;
+  color: #77a9c0;
+}
+.atlas-panel:not([open]) > summary::after {
+  content: "+";
+}
+.atlas-panel:not([open]) {
+  align-self: start;
+}
+.atlas-panel > summary span {
+  margin-left: auto;
+  color: #6f8ca7;
+}
+.body-atlas .structure-row small {
+  display: block;
+  color: #a8bac9;
+  font-size: 8px;
+  margin-top: 3px;
+}
+.atlas-note {
+  font-size: 10px;
+  line-height: 1.7;
+  color: #8ca3b8;
+  margin: 12px 6px;
+}
+.body-atlas .info > button {
+  margin-top: 12px;
+}
+.body-atlas .info a {
+  color: #66c4ef;
+  text-decoration: underline;
+}
+.body-atlas .info {
+  overflow-wrap: anywhere;
+}
+.atlas-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background: #0b1422;
+}
+.atlas-placeholder img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+}
+.atlas-placeholder > div {
+  padding: 16px;
+  color: #dce7ee;
+}
+.atlas-placeholder p {
+  max-width: 440px;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.atlas-placeholder button {
+  margin: 12px auto 0;
+}
+.atlas-placeholder progress {
+  display: block;
+  margin: 16px auto 0;
+  max-width: 90%;
+}
+.body-atlas .viewer-column:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  background: #0b1422;
+}
+.body-atlas .viewer-column:fullscreen .scene-wrap {
+  min-height: 0;
+}
+@media (min-width: 701px) and (max-width: 1200px) {
+  .body-atlas .info {
+    display: block;
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 700px) {
+  .body-atlas .scene-wrap {
+    min-height: 500px;
+  }
+  .body-atlas .model-disclaimer {
+    bottom: 60px;
   }
 }

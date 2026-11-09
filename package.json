@@ -9,12 +9,16 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "vite preview --host 0.0.0.0",
+    "prepare:anatomy": "node scripts/prepare-anatomy.mjs",
+    "prebuild": "npm run prepare:anatomy"
   },
   "dependencies": {
     "@cornerstonejs/core": "4.22.13",
     "@cornerstonejs/dicom-image-loader": "4.22.13",
     "@cornerstonejs/tools": "4.22.13",
+    "@dagno/anatomy-engine": "0.2.0",
+    "@dagno/anatomy-model": "0.1.2",
     "animejs": "4.5.0",
     "dicom-parser": "^1.8.21",
     "events": "^3.3.0",
@@ -22,7 +26,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.0.0",
-    "three": "^0.180.0",
+    "three": "0.186.1",
     "url": "^0.11.4",
     "zustand": "^5.0.0"
   },
@@ -33,7 +37,7 @@
     "@types/node": "^24.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "@types/three": "^0.180.0",
+    "@types/three": "0.186.0",
     "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^10.14.0",
     "globals": "^16.0.0",
