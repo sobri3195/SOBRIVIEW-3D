@@ -2,7 +2,13 @@
 
 ## Procedural anatomy
 
-The general atlas and the separate Skema Couinaud tab use Three.js sphere primitives. The default liver anatomy mode uses the attributed third-party model described below. Shapes, colors, positions and proportions are simplified, not validated anatomical segmentations. The Couinaud panel teaches names and interactions; the geometric segment arrangement is schematic and does not depict true boundaries. Do not use it for surgical planning.
+The dashboard and the separate Skema Couinaud tab use Three.js sphere primitives. The anatomy atlas and default liver anatomy mode use the attributed reference models described below. Shapes, colors, positions and proportions are simplified, not validated anatomical segmentations. The Couinaud panel teaches names and interactions; the geometric segment arrangement is schematic and does not depict true boundaries. Do not use it for surgical planning.
+
+## Whole-body reference atlas
+
+BodyParts3D, © The Database Center for Life Science, licensed under CC BY 4.0. Prepared by Human Atlas and Dagno. `@dagno/anatomy-model@0.1.2`, source commit `d3b47239f1038041bb550a1cfb6bfe40a62c4970`, bundles 2,234 meshes and 3,432 named concepts. The current UI uses 604 unique meshes in 13 explicitly mapped groups. Original `ATTRIBUTION.md`, CC BY 4.0 `LICENSE`, checksum metadata, and detailed group scope ship in `public/anatomy/`.
+
+Original converted coordinates, normals and geometry are preserved. No model from Liver Lab is merged into this coordinate system. Illustrative colors, material lighting, visibility, and camera framing are display adaptations. Both the atlas WebP preview and exported PNGs are attributed renderings of the same source model. The dataset is an adult male educational reference with omissions and simplification; lung parenchymal surfaces and complete abdominal-wall layers are absent. The documented local Dagno engine source extension retains its MIT notice; see `src/vendor/anatomy-engine/SOBRIVIEW.md`.
 
 ## Liver reference model
 

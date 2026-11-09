@@ -28,7 +28,7 @@ import { useReveal } from "../hooks/useReveal";
 import Presence from "../components/common/Presence";
 import { useApp } from "../stores/useApp";
 const Dashboard = lazy(() => import("../features/dashboard/Dashboard"));
-const Atlas = lazy(() => import("../features/anatomy/Atlas"));
+const BodyAtlas = lazy(() => import("../features/body-atlas/BodyAtlas"));
 const Liver = lazy(() => import("../features/liver/Liver"));
 const Viewer = lazy(() => import("../features/dicom/Viewer"));
 const Learning = lazy(() => import("../features/learning/Learning"));
@@ -224,7 +224,7 @@ export default function App() {
               <PageEntrance key={location.pathname}>
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
-                  <Route path="/atlas" element={<Atlas key="atlas" />} />
+                  <Route path="/atlas" element={<BodyAtlas />} />
                   <Route path="/liver" element={<Liver />} />
                   <Route path="/viewer" element={<Viewer key="viewer" />} />
                   <Route path="/mpr" element={<Viewer mpr key="mpr" />} />
