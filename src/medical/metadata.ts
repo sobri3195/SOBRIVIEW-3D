@@ -11,6 +11,10 @@ export type Spatial = {
   slope: number;
   intercept: number;
   instance: number;
+  frameOfReference?: string;
+  imageType?: string[];
+  photometric?: string;
+  transferSyntax?: string;
 };
 export function spatialPosition(m: Spatial) {
   const o = m.orientation,
@@ -46,7 +50,25 @@ export function sortSlices<T extends { metadata: Spatial }>(slices: T[]): T[] {
 export function groupSeries<T extends { metadata: Spatial }>(slices: T[]) {
   const groups = new Map<string, T[]>();
   for (const slice of slices) {
-    const key = slice.metadata.study + "|" + slice.metadata.series;
+    const m = slice.metadata;
+    const geometry = [
+      m.rows,
+      m.columns,
+      ...m.spacing.map((n) => n.toFixed(4)),
+      ...m.orientation.map((n) => n.toFixed(4)),
+    ].join(",");
+    const kind = m.imageType?.some((t) => /LOCALIZER|SCOUT/i.test(t))
+      ? "localizer"
+      : "image";
+    const key = [
+      m.study,
+      m.series,
+      m.frameOfReference || "",
+      m.modality,
+      m.photometric || "",
+      geometry,
+      kind,
+    ].join("|");
     const group = groups.get(key) || [];
     if (!group.some((s) => s.metadata.sop === slice.metadata.sop))
       group.push(slice);
@@ -97,6 +119,13 @@ export function validateVolume(slices: Spatial[]): string | null {
   if (slices.length < 3)
     return "At least three spatially positioned slices are required. Use the single-image/stack viewer for this series.";
   const first = slices[0];
+  if (slices.some((s) => s.imageType?.some((t) => /LOCALIZER|SCOUT/i.test(t))))
+    return "Localizer/scout images are not a reconstructable volume.";
+  if (
+    first.photometric &&
+    !["MONOCHROME1", "MONOCHROME2"].includes(first.photometric)
+  )
+    return "Only monochrome DICOM series are supported for MPR.";
   if (
     first.rows < 1 ||
     first.columns < 1 ||

@@ -115,6 +115,10 @@ test("educational workspace persistence", async ({ page }) => {
 });
 test("DICOM decoder renders generated local CT stack", async ({ page }) => {
   const errors: string[] = [];
+  const uploads: string[] = [];
+  page.on("request", (r) => {
+    if (!["GET", "HEAD"].includes(r.method())) uploads.push(r.url());
+  });
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/viewer");
   await page
@@ -154,6 +158,7 @@ test("DICOM decoder renders generated local CT stack", async ({ page }) => {
     )
     .toBe(true);
   expect(errors).toEqual([]);
+  expect(uploads).toEqual([]);
 });
 
 test("imported MPR reconstructs a coherent generated CT volume", async ({
@@ -206,6 +211,7 @@ test("demo annotations import validates dataset coordinates", async ({
   page,
 }) => {
   await page.goto("/viewer");
+  await page.getByLabel("Dataset", { exact: true }).selectOption("phantom");
   const doc = {
     version: 1,
     dataset: "synthetic-phantom",

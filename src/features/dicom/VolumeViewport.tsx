@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { initialize } from "../../medical/cornerstone";
 import { validateVolume } from "../../medical/metadata";
+import { dicomVolume } from "../../medical/volume";
 import type { ImportedSlice } from "../../medical/dicom";
 import type { Types } from "@cornerstonejs/core";
 export default function VolumeViewport({
@@ -93,12 +94,39 @@ export default function VolumeViewport({
         });
         viewports.current = [];
       };
+      const frames: Parameters<typeof dicomVolume>[0] = [];
       for (let i = 0; i < ids.length; i++) {
-        await core.imageLoader.loadAndCacheImage(ids[i]);
+        const image = await core.imageLoader.loadAndCacheImage(ids[i]);
+        frames.push({
+          metadata: slices[i].metadata,
+          scalarData: image.getPixelData(),
+          preScaled: !!(image.isPreScaled || image.preScale?.scaled),
+        });
         if (cancelled) return;
         setProgress(Math.round(((i + 1) / ids.length) * 100));
       }
-      await core.volumeLoader.createAndCacheVolumeFromImages(volumeId, ids);
+      const common = dicomVolume(frames);
+      const volume = core.volumeLoader.createLocalVolume(volumeId, {
+        scalarData: common.scalarData,
+        dimensions: common.dimensions,
+        spacing: common.spacing,
+        origin: common.origin,
+        direction: common.direction,
+        metadata: core.utilities.makeVolumeMetadata(ids),
+      });
+      volume.isPreScaled = true;
+      const derivedIds = volume.imageIds;
+      const previousCleanup = cleanup;
+      cleanup = () => {
+        previousCleanup();
+        for (const imageId of derivedIds) {
+          try {
+            core.cache.removeImageLoadObject(imageId);
+          } catch {
+            /* Already released. */
+          }
+        }
+      };
       if (cancelled) return;
       await Promise.all(
         viewports.current.map((v) => v.setVolumes([{ volumeId }])),

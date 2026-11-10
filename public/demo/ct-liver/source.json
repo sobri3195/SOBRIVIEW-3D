@@ -1,0 +1,105 @@
+{
+  "id": "ctliver-preview-sha256:43a411a5612ef22fd70df9bbc4b89cad46777bd8eb7c522e1b5a57a99bb63b83",
+  "title": "CTLiver — resampled preview",
+  "format": "NRRD",
+  "modality": "CT",
+  "upstream": {
+    "url": "https://github.com/Slicer/SlicerTestingData/releases/download/SHA256/e16eae0ae6fefa858c5c11e58f0f1bb81834d81b7102e021571056324ef6f37e",
+    "file": "CTLiver.nrrd",
+    "bytes": 292331176,
+    "sha256": "e16eae0ae6fefa858c5c11e58f0f1bb81834d81b7102e021571056324ef6f37e",
+    "dimensions": [
+      512,
+      512,
+      685
+    ],
+    "type": "float32",
+    "decodedBytes": 718274560,
+    "space": "left-posterior-superior",
+    "spaceDirections": [
+      [
+        -0.69921875,
+        0,
+        0
+      ],
+      [
+        0,
+        -0.69921875,
+        0
+      ],
+      [
+        0,
+        0,
+        0.6999999284744265
+      ]
+    ],
+    "origin": [
+      188.18499755859375,
+      320.03762817382824,
+      15.300048828125004
+    ]
+  },
+  "preview": {
+    "file": "CTLiver-preview.nrrd",
+    "bytes": 32587204,
+    "sha256": "43a411a5612ef22fd70df9bbc4b89cad46777bd8eb7c522e1b5a57a99bb63b83",
+    "dimensions": [
+      256,
+      256,
+      343
+    ],
+    "decodedBytes": 89915392,
+    "type": "float32",
+    "range": [
+      -1024,
+      3071
+    ],
+    "spacing": [
+      1.3984375,
+      1.3984375,
+      1.399999856948853
+    ],
+    "origin": [
+      188.18499755859375,
+      320.03762817382824,
+      15.300048828125004
+    ],
+    "spaceDirections": [
+      [
+        -1.3984375,
+        0,
+        0
+      ],
+      [
+        0,
+        -1.3984375,
+        0
+      ],
+      [
+        0,
+        0,
+        1.399999856948853
+      ]
+    ],
+    "initialSlice": 220,
+    "method": "Nearest-neighbor on source indices [2*i,2*j,2*k]; no intensity scaling or interpolation. Last x/y source index 511 is not sampled; final z index 684 is preserved."
+  },
+  "provenance": {
+    "dataset": "Medical Segmentation Decathlon",
+    "task": "Task03_Liver",
+    "image": "imagesTr/liver_100.nii.gz",
+    "sampleDataRevision": "4aeb6cc47e0372105004d6045efa5f52b6501542",
+    "definition": "https://github.com/Slicer/Slicer/blob/4aeb6cc47e0372105004d6045efa5f52b6501542/Modules/Scripted/SampleData/SampleData.py",
+    "spatialUnits": "mm per 3D Slicer physical-coordinate convention; original NRRD omits space units; derivative explicitly records this provenance assumption.",
+    "coordinateReference": "https://github.com/Slicer/Slicer/blob/4aeb6cc47e0372105004d6045efa5f52b6501542/Docs/user_guide/coordinate_systems.md"
+  },
+  "intensity": {
+    "unit": "Intensity",
+    "calibration": "NRRD stores converted float values; no HU unit/calibration is stated in this header. No DICOM rescale is applied."
+  },
+  "license": {
+    "name": "CC BY-SA 4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "attribution": "CT contoh publik — Medical Segmentation Decathlon / 3D Slicer. Untuk edukasi dan penelitian. Resampled preview · CC BY-SA 4.0."
+}
