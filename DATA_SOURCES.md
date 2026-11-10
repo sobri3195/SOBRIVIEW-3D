@@ -18,11 +18,17 @@ The seven-group subset is packaged by https://github.com/organui/liver-3d at com
 
 The GLB is unchanged. Materials, lighting, centering and uniform display scale are adjusted at runtime. The attributed WebP preview is a rendering of this same GLB. Surface seams are inherited; seven display groups do not represent Couinaud segments. Common bile duct, inferior vena cava and other structures are omitted by the source. This adult reference has no patient-specific or clinical validation.
 
+## Public CT example
+
+Medical Segmentation Decathlon Task03_Liver, `imagesTr/liver_100.nii.gz`, distributed through 3D Slicer's official CTLiver sample data. Dataset and derivative license: CC BY-SA 4.0. The source NRRD SHA-256 is `e16eae0ae6fefa858c5c11e58f0f1bb81834d81b7102e021571056324ef6f37e`; its provenance is pinned to Slicer sample definition commit `4aeb6cc47e0372105004d6045efa5f52b6501542`.
+
+The default CT Explorer uses a real resampled volume, not rendered anatomy models or duplicate images. Nearest-neighbor source `[2i,2j,2k]` sampling preserves float32 intensity, origin and direction while doubling spacing. All source/derivative geometry, bytes and hashes are recorded in `public/demo/ct-liver/source.json`; adaptation details and attribution ship alongside it. The full 512 × 512 × 685 source is available through the offline preparation script, while the 256 × 256 × 343 preview is deployed. Intensity calibration is not stated in the header, so NRRD values are not labelled HU. Spatial mm is explicitly based on Slicer's physical-coordinate convention because the original omits `space units`. No independent clinical/spatial validation or desktop Slicer review is claimed.
+
 ## Imaging phantom
 
 `src/medical/demo.ts` defines a deterministic mathematical phantom sampled on a 96 × 96 × 96 grid with 1 mm isotropic spacing. Ellipsoid/cylinder intensity regions are artificial and do not represent real organ boundaries, pathology or patient anatomy. All displayed values in this demo are synthetic intensity units, not measured patient HU. The three planes resample the same function.
 
-`tests/fixture.ts` generates an Explicit VR Little Endian single-frame CT phantom for DICOM import/decoder tests. The UID namespace is test-only; files contain no real patient information. Values and calibration fields are artificial. No real CT dataset has been validated in this release.
+`tests/fixture.ts` generates an Explicit VR Little Endian single-frame CT phantom for DICOM import/decoder tests. The UID namespace is test-only; files contain no real patient information. Values and calibration fields are artificial. These test fixtures remain separate from the public CTLiver example. No clinical validation is claimed.
 
 ## Educational references
 

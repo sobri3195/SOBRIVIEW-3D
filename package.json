@@ -11,7 +11,9 @@
     "test:e2e": "playwright test",
     "preview": "vite preview --host 0.0.0.0",
     "prepare:anatomy": "node scripts/prepare-anatomy.mjs",
-    "prebuild": "npm run prepare:anatomy"
+    "prebuild": "npm run prepare:anatomy && npm run verify:ct",
+    "prepare:ct": "node scripts/prepare-ct-liver.mjs",
+    "verify:ct": "node scripts/verify-ct-liver.mjs"
   },
   "dependencies": {
     "@cornerstonejs/core": "4.22.13",

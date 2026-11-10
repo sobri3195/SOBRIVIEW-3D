@@ -2042,3 +2042,116 @@ input:disabled {
     bottom: 60px;
   }
 }
+
+.dataset-switch {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.dataset-switch label {
+  margin: 0;
+}
+.dataset-switch select {
+  min-width: 0;
+  max-width: 100%;
+}
+.ct-toolbar {
+  flex-wrap: wrap;
+  white-space: normal;
+  overflow: visible;
+}
+.ct-workspace {
+  position: relative;
+  align-self: start;
+  height: min(75vh, 760px);
+  min-width: 0;
+  min-height: 560px;
+  background: #020508;
+}
+.ct-slice {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  touch-action: none;
+}
+.ct-slice canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: none;
+}
+.ct-orientation {
+  position: absolute;
+  color: #9bcee4;
+  font-size: 12px;
+  pointer-events: none;
+}
+.ct-orientation.top {
+  top: 24px;
+  left: 50%;
+}
+.ct-orientation.bottom {
+  bottom: 24px;
+  left: 50%;
+}
+.ct-orientation.left {
+  top: 50%;
+  left: 12px;
+}
+.ct-orientation.right {
+  top: 50%;
+  right: 12px;
+}
+.ct-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background: #07111be8;
+  padding: 30px;
+}
+.ct-loading p {
+  max-width: 500px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.ct-loading button {
+  margin: 12px auto 0;
+}
+.ct-loading progress {
+  margin: 12px auto;
+}
+.ct-properties {
+  overflow-wrap: anywhere;
+}
+.ct-properties a {
+  color: #60c5ed;
+  text-decoration: underline;
+}
+.ct-empty {
+  padding: 80px 20px;
+  text-align: center;
+  background: #07111b;
+  border: 1px dashed #33495d;
+  border-radius: 8px;
+}
+.ct-slice .probe {
+  background: #020508cc;
+  padding: 4px 8px;
+  max-width: calc(100% - 25px);
+}
+@media (max-width: 700px) {
+  .ct-workspace {
+    height: 470px;
+    min-height: 470px;
+  }
+  .dataset-switch {
+    flex-wrap: wrap;
+  }
+  .ct-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

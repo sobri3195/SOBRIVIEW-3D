@@ -1,8 +1,26 @@
 import { defineConfig } from "vitest/config";
+import { cpSync } from "node:fs";
+import { resolve } from "node:path";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  // Keep the verified 292 MB preparation source locally; deploy the real-volume preview.
+  build: { copyPublicDir: false },
+  plugins: [
+    react(),
+    tailwindcss(),
+    {
+      name: "copy-deployable-public-assets",
+      apply: "build",
+      writeBundle(output) {
+        cpSync(resolve("public"), resolve(output.dir || "dist"), {
+          recursive: true,
+          filter: (path) =>
+            path !== resolve("public/demo/ct-liver/CTLiver.nrrd"),
+        });
+      },
+    },
+  ],
   resolve: { alias: { events: "events/", url: "url/" } },
   optimizeDeps: {
     exclude: ["@cornerstonejs/dicom-image-loader"],

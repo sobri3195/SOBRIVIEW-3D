@@ -5,3 +5,5 @@ dist/
 playwright-report/
 test-results/
 *.tsbuildinfo
+# Verified upstream source is 292 MB; only the documented volume preview ships.
+public/demo/ct-liver/CTLiver.nrrd
